@@ -1,16 +1,213 @@
 ---
-
+import Form from "../components/Form.astro";
+import Timeline from "../components/Timeline.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#F2F1ED] font-copy text-lg">
+    <header class="h-20 flex items-center">
+      <nav
+        class="max-w-screen-lg mx-auto gap-6 w-full flex items-baseline px-8"
+      >
+        <a href="/" class="mr-auto">
+          <p class="text-3xl small-caps tracking-widest">Emma & Jeppe</p>
+        </a>
+        <a href="#location">Hvor er festen?</a>
+        <a href="#sleeping">Hvor skal vi sove?</a>
+        <a href="#rsvp">Sig ja!</a>
+      </nav>
+    </header>
+    <main>
+      <div class="flex flex-col items-center mt-24">
+        <h1 class="text-6xl mb-4">Vi skal giftes!</h1>
+        <div class="relative flex flex-col items-center justify-center -mb-12">
+          <div class="h-px bg-black opacity-25 absolute w-60"></div>
+          <time
+            datetime="2025-06-07T13:00:00+02:00"
+            class="text-3xl italic bg-[#F2F1ED] relative px-4"
+          >
+            7. juni 2025
+          </time>
+        </div>
+        <img src="/public/main-close.png" />
+        <p class="mt-8 text-2xl">
+          Derfor inviterer vi alle dem vi holder af til at fejre det med os
+        </p>
+      </div>
+
+      <div class="w-full max-w-screen-lg text-center mx-auto mt-24 px-8">
+        <h2 class="text-5xl mb-8 text-gray-950" id="location">
+          Hvor er festen?
+        </h2>
+        <p class="text-2xl/10 text-gray-700">
+          Vi tager jer med på den bedste lejrtur nogensinde. Festen holder vi
+          nemlig i <a
+            class="underline"
+            href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x464d34e9205c5ec5:0x781683b4c0c42773?sa=X&ved=1t:8290&ictx=111"
+            >Egebjerghytten på Sydfyn</a
+          > og vielsen vil finde sted i den lille lund ved siden af hytten.
+        </p>
+      </div>
+
+      <div class="mt-24">
+        <Timeline />
+      </div>
+
+      <div class="w-full max-w-screen-lg text-center mx-auto mt-24 px-8">
+        <h2 class="text-5xl mb-8 text-gray-950" id="sleeping">
+          Hvor skal vi sove?
+        </h2>
+        <p class="text-2xl/10 text-gray-700">
+          Ingen lejrtur uden overnatning. Der er både mulighed for at booke en
+          køje i en af de to sovesale, og man kan selv medbringe telt,
+          campingvogn eller hængekøje og sætte det op på græsarealerne omkring
+          hytten. Er man mere til et hotelværelse ligger Svendborg ca. et
+          kvarters kørsel fra festen, hvor vi har <a
+            class="underline"
+            href="https://danhostel-svendborg.dk/">Danhostel Svendborg</a
+          > og <a class="underline" href="https://hotelsvendborg.dk/"
+            >Hotel Svendborg</a
+          > blandt andre.
+        </p>
+      </div>
+
+      <div class="mt-24 pb-48">
+        <Form />
+      </div>
+      <!-- <div class="w-full max-w-screen-lg mx-auto mt-24">
+        <div
+          class="bg-white prose rounded-md p-12 ring-1 ring-black ring-opacity-5 shadow-sm"
+        >
+        <h2></h2>
+        </div>
+      </div> -->
+
+      <!-- <div
+        class="mx-auto mt-32 bg-white bg-opacity-25 border border-opacity-10 border-black shadow-sm rounded p-8 w-full max-w-screen-md"
+      >
+        <h2 class="text-3xl text-center mb-8">
+          Det vil glæde os at se jer til vores store dag
+        </h2>
+        <div class="flex flex-row">
+          <div class="flex-1">
+            <div>
+              <label for="email" class="block text-sm font-medium">Navn</label>
+              <div class="mt-1">
+                <input
+                  type="text"
+                  name="name1"
+                  id="name1"
+                  class="block w-full rounded-md border-black border-opacity-10 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  placeholder="Moster Møller"
+                />
+              </div>
+            </div>
+             <button
+              type="button"
+              class="border border-black border-opacity-10 text-sm flex items-center px-3 py-1 rounded bg-black bg-opacity-5 mt-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"></path>
+              </svg>
+              Tilføj person
+            </button>
+          </div>
+          <fieldset class="grid grid-cols-2 ml-12 mr-12 gap-x-4">
+            <legend class="block text-sm font-medium mb-1 opacity-35">
+              Overnatning
+            </legend>
+            <label class="flex items-center text-sm font-medium mr-2">
+              <input
+                type="radio"
+                name="sleeping"
+                value="sovesal"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Sovesal
+            </label>
+            <label class="flex items-center text-sm font-medium">
+              <input
+                type="radio"
+                name="sleeping"
+                value="Telt"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Telt
+            </label>
+            <label class="flex items-center text-sm font-medium">
+              <input
+                type="radio"
+                name="sleeping"
+                value="Telt"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Hotel
+            </label>
+            <label class="flex items-center text-sm font-medium">
+              <input
+                type="radio"
+                name="sleeping"
+                value="svagdrikker"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Andet
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend class="block text-sm font-medium mb-1 opacity-35">
+              Allergier
+            </legend>
+            <label class="flex items-center text-sm font-medium">
+              <input
+                type="checkbox"
+                name="allergies"
+                value="lactose"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Laktose
+            </label>
+            <label class="flex items-center text-sm font-medium">
+              <input
+                type="checkbox"
+                name="allergies"
+                value="Telt"
+                class="border border-black border-opacity-10 text-sm mr-2"
+              />
+              Gluten
+            </label>
+          </fieldset>
+        </div>
+      </div>
+
+     
+    </main>
+    <footer class="h-24"></footer>
+  </body>
+</html>
+-->
+    </main></body
+  >
 </html>
