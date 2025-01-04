@@ -80,38 +80,62 @@
           <p class="ml-2">Andet</p>
         </label>
       </fieldset>
+      <p id="formText" class="text-center"></p>
       <button
-        class="block w-full bg-black/5 h-14 text-center border border-black/25 rounded-sm"
-        >Send</button
-      >
+        class="flex items-center justify-center gap-4 w-full bg-black/5 h-14 text-center border border-black/25 rounded-sm"
+        >Send
+
+        <svg
+          id="spinner"
+          data-submitting="false"
+          class="animate-spin -ml-1 mr-3 h-5 w-5 text-copy hidden data-[submitting=true]:block"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+      </button>
     </div>
   </form>
 </div>
 
 <script>
   const form = document.getElementById("guest-form") as HTMLFormElement;
+  const spinner = document.getElementById("spinner") as HTMLElement;
+  const formText = document.getElementById("formText") as HTMLElement;
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
     const name = data.get("name");
     const firstName = name?.toString().split(" ")[0];
+    spinner.setAttribute("data-submitting", "true");
     fetch("https://api.sheetmonkey.io/form/tqdZvSf6rrtNnoSUbkGpTa", {
       method: "POST",
       body: data,
     })
       .then((response) => {
+        spinner.setAttribute("data-submitting", "false");
         if (response.ok) {
           form.reset();
-          form.querySelector("input")?.focus();
-          alert(`Vi glæder os til at se dig, ${firstName}!`);
+          formText.innerText = `Vi glæder os til at se dig, ${firstName}!`;
         } else {
           throw new Error(response.status + " " + response.statusText);
         }
       })
       .catch((error) => {
-        alert(
-          `Åh nej, noget gik galt. Sig til Jeppe at den siger ${error.toString()} og er dum.`,
-        );
+        formText.innerText = `Åh nej, noget gik galt. Sig til Jeppe at den siger ${error.toString()} og er dum.`;
       });
   });
 </script>
