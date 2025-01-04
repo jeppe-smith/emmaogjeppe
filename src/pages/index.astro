@@ -24,12 +24,14 @@ import Timeline from "../components/Timeline.astro";
         class="max-w-screen-lg mx-auto gap-6 w-full flex items-baseline px-8 text-2xl"
       >
         <a href="/" class="mr-auto">
-          <p class="text-3xl small-caps tracking-widest">Emma & Jeppe</p>
+          <p class="text-3xl small-caps whitespace-nowrap tracking-widest">
+            Emma & Jeppe
+          </p>
         </a>
         <a href="#location" class="hidden lg:block">Hvor er festen?</a>
         <a href="#sleeping" class="hidden lg:block">Hvor skal vi sove?</a>
         <a href="#info" class="hidden lg:block">Praktisk information</a>
-        <a href="#rsvp">Sig ja!</a>
+        <a href="#rsvp" class="hidden lg:block">Sig ja!</a>
         <button type="button" class="self-center lg:hidden" id="menu-opener">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@ import Timeline from "../components/Timeline.astro";
         </button>
 
         <div
-          class="fixed inset-0 bg-[#F2F1ED] z-10 text-3xl flex flex-col text-center justify-center hidden"
+          class="fixed inset-0 bg-[#F2F1ED] z-10 text-3xl flex flex-col text-center justify-center z-50 hidden"
           id="menu"
         >
           <a href="#location" class="my-8">Hvor er festen?</a>
@@ -72,7 +74,7 @@ import Timeline from "../components/Timeline.astro";
               7. juni 2025
             </time>
           </div>
-          <p id="countdown" class="opacity-50 tabular-nums"></p>
+          <p id="countdown" class="opacity-50 tabular-nums relative z-10"></p>
         </div>
         <div class="grid sm:grid-cols-3 gap-6 relative -mt-24 sm:mt-0 z-0">
           <img src="/DSC01604.webp" class="hidden sm:block" />
@@ -247,7 +249,7 @@ import Timeline from "../components/Timeline.astro";
         </div>
       </div>
 
-     
+
     </main>
     <footer class="h-24"></footer>
   </body>

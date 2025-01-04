@@ -99,10 +99,14 @@
       method: "POST",
       body: data,
     })
-      .then(() => {
-        form.reset();
-        form.querySelector("input")?.focus();
-        alert(`Vi glæder os til at se dig, ${firstName}!`);
+      .then((response) => {
+        if (response.ok) {
+          form.reset();
+          form.querySelector("input")?.focus();
+          alert(`Vi glæder os til at se dig, ${firstName}!`);
+        } else {
+          throw new Error(response.status + " " + response.statusText);
+        }
       })
       .catch((error) => {
         alert(
